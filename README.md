@@ -19,17 +19,17 @@
 
 ## items
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| item_name    | string     | null :false                    |
-| price        | integer    | null :false                    |
-| text         | text       | null :false                    |
-| category     | integer    | null :false                    |
-| item_status  | integer    | null :false                    |
-| postage_bare | integer    | null :false                    |
-| prefectures  | integer    | null :false                    |
-| days_ship    | integer    | null :false                    |
-| user         | references | null :false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| item_name       | string     | null :false                    |
+| price           | integer    | null :false                    |
+| text            | text       | null :false                    |
+| category_id     | integer    | null :false                    |
+| item_status_id  | integer    | null :false                    |
+| postage_bare_id | integer    | null :false                    |
+| prefecture_id   | integer    | null :false                    |
+| days_ship_id    | integer    | null :false                    |
+| user            | references | null :false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -49,15 +49,15 @@
 
 ## addresses
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| post_code   | string     | null :false                    |
-| prefectures | integer    | null :false                    |
-| cities      | string     | null :false                    |
-| address     | string     | null :false                    |
-| building    | string     |                                |
-| tel_number  | string     | null :false                    |
-| order       | references | null :false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | string     | null :false                    |
+| prefecture_id | integer    | null :false                    |
+| cities        | string     | null :false                    |
+| address       | string     | null :false                    |
+| building      | string     |                                |
+| tel_number    | string     | null :false                    |
+| order         | references | null :false, foreign_key: true |
 
 ### Association
 - belongs_to :order
