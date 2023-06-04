@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
-    validates :price
+    validates :price, numericality: { greater_than: 299, less_than:10000000}
     validates :text
     with_options numericality: { other_than: 1, message: "can't be blank."} do
       validates :category_id
