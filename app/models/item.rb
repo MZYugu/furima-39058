@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   with_options presence: true do
+    validates :image
     validates :item_name
     validates :price, numericality: { greater_than: 299, less_than:10000000}
     validates :text
