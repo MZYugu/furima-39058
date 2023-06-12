@@ -13,6 +13,12 @@ RSpec.describe Item, type: :model do
     end
 
     context '出品情報が保存できないとき' do
+      it 'imageが空だと出品できない' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+
       it 'item_nameが空だと出品できない' do
         @item.item_name = ''
         @item.valid?
