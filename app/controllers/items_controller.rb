@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :get_item, only[:show, :edit]
+  before_action :get_item, only: [:show, :edit]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
