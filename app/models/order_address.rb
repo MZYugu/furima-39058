@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :post_code, :prefecture_id, :cities, :address, :building, :tel_number, :order_id
+  attr_accessor :post_code, :prefecture_id, :cities, :address, :building, :tel_number, :order_id, :user_id
   
   with_options presence: true do
     validates :post_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
@@ -13,7 +13,7 @@ class OrderAddress
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
   
   def save
-    order = Order.create(order_id: order_id)
+    order = Order.create(order_id: order_id, user_id: user_id)
     Address.create(post_code: post_code, prefecture_id: prefecture_id, cities: cities, address: address, building: building, tel_number: tel_number, order_id: order.id)
   end
 end
