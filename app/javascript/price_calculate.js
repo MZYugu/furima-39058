@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
   const priceInput = document.getElementById("item-price");
+  if (!priceInput){ return false;}
   priceInput.addEventListener("input", () => {
     const valueInput = priceInput.value;
     const priceTax = document.getElementById("add-tax-price");
