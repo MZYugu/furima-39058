@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.includes(:order).all.order("created_at DESC")
     @count = Item.count
   end
 
@@ -51,6 +51,6 @@ class ItemsController < ApplicationController
   end
 
   def get_item
-    @item = Item.includes(:user).find(params[:id])
+    @item = Item.includes([:user, :order]).find(params[:id])
   end
 end
