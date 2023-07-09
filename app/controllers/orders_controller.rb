@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @item = Item.includes(:user).find(params[:item_id])
-    if current_user.id == @item.user_id
+    @item = Item.includes([:user, :order]).find(params[:item_id])
+    if current_user.id == @item.user_id || @item.order
       redirect_to root_path
     end
     @order_address = OrderAddress.new
