@@ -72,8 +72,13 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel number is invalid. Exclude hyphen(-)")
       end
-      it 'Tel_numberが12桁以上では保存できない' do
+      it 'tel_numberが12桁以上では保存できない' do
         @order_address.tel_number = '012345678901'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Tel number is invalid. Exclude hyphen(-)")
+      end
+      it 'tel_numberに-(ハイフン)が含まれていると保存できない' do
+        @order_address.tel_number = '012-345-67'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel number is invalid. Exclude hyphen(-)")
       end
