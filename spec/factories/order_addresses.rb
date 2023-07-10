@@ -8,7 +8,9 @@ FactoryBot.define do
     cities        {test_address.city.kanji}
     address       {test_address.town.kanji}
     building      {Faker::Lorem.word}
-    tel_number    {'0' + Faker::Number.number(digits: 9).to_s}
+    tel_number    {Faker::Number.number(digits: 10).to_s}
+    token {'tok_' + Faker::Lorem.characters(number: 28)}
+
 
   end
 end
