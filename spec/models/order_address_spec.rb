@@ -77,8 +77,8 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel number is invalid. Exclude hyphen(-)")
       end
-      it 'tel_numberに-(ハイフン)が含まれていると保存できない' do
-        @order_address.tel_number = '012-345-67'
+      it 'tel_numberに半角英数字以外が含まれていると保存できない' do
+        @order_address.tel_number = '012-３4五-67'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Tel number is invalid. Exclude hyphen(-)")
       end
